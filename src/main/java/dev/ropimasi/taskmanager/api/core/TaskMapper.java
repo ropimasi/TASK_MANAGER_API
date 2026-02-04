@@ -1,0 +1,29 @@
+package dev.ropimasi.taskmanager.api.core;
+
+import org.springframework.stereotype.Component;
+import dev.ropimasi.taskmanager.api.model.dto.TaskCreateRequestDto;
+import dev.ropimasi.taskmanager.api.model.dto.TaskCreateResponseDto;
+import dev.ropimasi.taskmanager.api.model.entity.Task;
+
+
+
+@Component
+public class TaskMapper {
+	public Task toEntity(TaskCreateRequestDto dto) {
+		Task task = new Task();
+		task.setTitle(dto.title());
+		task.setDescription(dto.description());
+		return task;
+	}
+
+
+	public TaskCreateRequestDto toCreateRequestDto(Task task) {
+		return new TaskCreateRequestDto(task.getTitle(), task.getDescription());
+	}
+
+
+	public TaskCreateResponseDto toCreateResponseDto(Task task) {
+		return new TaskCreateResponseDto(task.getId(), task.getTitle(), task.getDescription(), task.isCompleted());
+	}
+
+}

@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import dev.ropimasi.taskmanager.api.model.dto.TaskCreateRequestDTO;
+import dev.ropimasi.taskmanager.api.model.dto.TaskCreateRequestDto;
+import dev.ropimasi.taskmanager.api.model.dto.TaskCreateResponseDto;
 import dev.ropimasi.taskmanager.api.model.entity.Task;
 import dev.ropimasi.taskmanager.api.model.repository.TaskRepository;
+import dev.ropimasi.taskmanager.api.service.TaskService;
 import jakarta.validation.Valid;
 
 
@@ -23,6 +25,9 @@ public class TaskController {
 	@Autowired
 	private TaskRepository taskRepository;
 
+	@Autowired
+	private TaskService taskService;
+
 
 	@GetMapping
 	public ResponseEntity<List<Task>> listAll() {
@@ -32,14 +37,9 @@ public class TaskController {
 
 
 	@PostMapping
-	public ResponseEntity<Task> createTask(@RequestBody @Valid TaskCreateRequestDTO taskDTO) {
-
-		Task taskToSave = new Task();
-		taskToSave.setTitle(taskDTO.title());
-		taskToSave.setDescription(taskDTO.description());
-
-		Task savedTask = taskRepository.save(taskToSave);
-		return ResponseEntity.status(HttpStatus.CREATED).body(savedTask);
+	public ResponseEntity<TaskCreateResponseDto> createTask(@RequestBody @Valid TaskCreateRequestDto taskDTO) {
+		TaskCreateResponseDto savedTaskDto = taskService.saveNewTask(taskDTO);
+		return ResponseEntity.status(HttpStatus.CREATED).body(savedTaskDto);
 	}
 
 }
