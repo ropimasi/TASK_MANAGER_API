@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import dev.ropimasi.taskmanager.api.model.dto.TaskCreateRequestDto;
 import dev.ropimasi.taskmanager.api.model.dto.TaskCreateResponseDto;
-import dev.ropimasi.taskmanager.api.model.entity.Task;
+import dev.ropimasi.taskmanager.api.model.dto.TaskListResponseDto;
 import dev.ropimasi.taskmanager.api.model.repository.TaskRepository;
 import dev.ropimasi.taskmanager.api.service.TaskService;
 import jakarta.validation.Valid;
@@ -23,23 +23,20 @@ import jakarta.validation.Valid;
 public class TaskController {
 
 	@Autowired
-	private TaskRepository taskRepository;
-
-	@Autowired
 	private TaskService taskService;
-
-
-	@GetMapping
-	public ResponseEntity<List<Task>> listAll() {
-		List<Task> tasks = taskRepository.findAll();
-		return ResponseEntity.ok(tasks);
-	}
 
 
 	@PostMapping
 	public ResponseEntity<TaskCreateResponseDto> createTask(@RequestBody @Valid TaskCreateRequestDto taskDTO) {
 		TaskCreateResponseDto savedTaskDto = taskService.saveNewTask(taskDTO);
 		return ResponseEntity.status(HttpStatus.CREATED).body(savedTaskDto);
+	}
+
+
+	@GetMapping
+	public ResponseEntity<List<TaskListResponseDto>> listAll() {
+		List<TaskListResponseDto> tasks = taskService.findAllTasks();
+		return ResponseEntity.ok(tasks);
 	}
 
 }

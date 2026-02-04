@@ -1,10 +1,13 @@
 package dev.ropimasi.taskmanager.api.service;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import dev.ropimasi.taskmanager.api.core.TaskMapper;
 import dev.ropimasi.taskmanager.api.model.dto.TaskCreateRequestDto;
 import dev.ropimasi.taskmanager.api.model.dto.TaskCreateResponseDto;
+import dev.ropimasi.taskmanager.api.model.dto.TaskListResponseDto;
 import dev.ropimasi.taskmanager.api.model.entity.Task;
 import dev.ropimasi.taskmanager.api.model.repository.TaskRepository;
 
@@ -20,11 +23,18 @@ public class TaskService {
 	private TaskMapper taskMapper;
 
 
+	@Transactional
 	public TaskCreateResponseDto saveNewTask(TaskCreateRequestDto taskDTO) {
 		// Here we can add business logic before saving the task if needed.
 		Task taskToSave = taskMapper.toEntity(taskDTO);
 		Task savedTask = taskRepository.save(taskToSave);
 		return taskMapper.toCreateResponseDto(savedTask);
+	}
+
+
+	@Transactional(readOnly = true)
+	public List<TaskListResponseDto> findAllTasks() {
+		return taskRepository.findAll().stream().map(taskMapper::toListResponseDto).toList();
 	}
 
 }
