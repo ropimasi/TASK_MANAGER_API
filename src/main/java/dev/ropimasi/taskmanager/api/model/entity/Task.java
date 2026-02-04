@@ -1,4 +1,4 @@
-package dev.ropimasi.taskmanager.api.entity;
+package dev.ropimasi.taskmanager.api.model.entity;
 
 import java.time.LocalDateTime;
 import org.hibernate.annotations.CreationTimestamp;
