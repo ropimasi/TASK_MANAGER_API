@@ -12,13 +12,19 @@ public class TaskManagerApiController {
 
 	@GetMapping("/hello")
 	public String hello() {
-		return "Hello, Task Manager API !";
+		return "Hello! I'm Task Manager API.";
 	}
 
 
 	@GetMapping("/about")
 	public String about() {
-		return "This is a simple Task Manager API built with Spring Boot.";
+		String aboutInfo = """
+				          Task Manager API is a RESTful API that allows users to manage their tasks.
+				          It provides endpoints for creating, reading, updating, and deleting tasks.
+				          The API is built using Java and Spring, following best practices for RESTful API design,
+				          and clean-code principles.
+				          """;
+		return aboutInfo;
 	}
 
 }

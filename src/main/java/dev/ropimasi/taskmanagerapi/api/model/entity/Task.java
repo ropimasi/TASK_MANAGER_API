@@ -8,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,6 +18,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 //@Table(name = "task")
 public class Task {
@@ -31,11 +33,11 @@ public class Task {
 	private String description;
 
 	@Column(nullable = false, columnDefinition = "boolean default false")
-	private boolean completed = false;
+	private Boolean completed = false;
 
 	@Column(nullable = false, updatable = false, columnDefinition = "TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP")
 	@CreationTimestamp
-	private LocalDateTime createdAt = LocalDateTime.now();
+	private LocalDateTime createdAt; // = LocalDateTime.now(); // Value set by @CreationTimestamp.
 
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP")
 	@UpdateTimestamp
