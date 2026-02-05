@@ -8,8 +8,8 @@ _(dev.ropimasi.taskmanagerapi)_
 ## LIST OF CONTENTS
 * [Attention: Rights, License and Disclaimer](#attention-rights)
 * [Description](#description)
-* [Description - Screenshots](description-screenshots)
-* [Techniques Used](techniques)
+* [Description - Screenshots](#description-screenshots)
+* [Techniques Used](#techniques)
 * [Versioning Guideline](#versioning)
 * [Features](#features)
 * [Instructions](#instructions)
