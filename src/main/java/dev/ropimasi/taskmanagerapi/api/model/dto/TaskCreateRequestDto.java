@@ -1,4 +1,4 @@
-package dev.ropimasi.taskmanager.api.model.dto;
+package dev.ropimasi.taskmanagerapi.api.model.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

@@ -1,15 +1,15 @@
-package dev.ropimasi.taskmanager.api.service;
+package dev.ropimasi.taskmanagerapi.api.service;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import dev.ropimasi.taskmanager.api.core.TaskMapper;
-import dev.ropimasi.taskmanager.api.model.dto.TaskCreateRequestDto;
-import dev.ropimasi.taskmanager.api.model.dto.TaskCreateResponseDto;
-import dev.ropimasi.taskmanager.api.model.dto.TaskListResponseDto;
-import dev.ropimasi.taskmanager.api.model.entity.Task;
-import dev.ropimasi.taskmanager.api.model.repository.TaskRepository;
+import dev.ropimasi.taskmanagerapi.api.core.TaskMapper;
+import dev.ropimasi.taskmanagerapi.api.model.dto.TaskCreateRequestDto;
+import dev.ropimasi.taskmanagerapi.api.model.dto.TaskCreateResponseDto;
+import dev.ropimasi.taskmanagerapi.api.model.dto.TaskListResponseDto;
+import dev.ropimasi.taskmanagerapi.api.model.entity.Task;
+import dev.ropimasi.taskmanagerapi.api.model.repository.TaskRepository;
 
 
 

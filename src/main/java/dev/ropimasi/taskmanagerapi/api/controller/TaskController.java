@@ -1,4 +1,4 @@
-package dev.ropimasi.taskmanager.api.controller;
+package dev.ropimasi.taskmanagerapi.api.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import dev.ropimasi.taskmanager.api.model.dto.TaskCreateRequestDto;
-import dev.ropimasi.taskmanager.api.model.dto.TaskCreateResponseDto;
-import dev.ropimasi.taskmanager.api.model.dto.TaskListResponseDto;
-import dev.ropimasi.taskmanager.api.model.repository.TaskRepository;
-import dev.ropimasi.taskmanager.api.service.TaskService;
+import dev.ropimasi.taskmanagerapi.api.model.dto.TaskCreateRequestDto;
+import dev.ropimasi.taskmanagerapi.api.model.dto.TaskCreateResponseDto;
+import dev.ropimasi.taskmanagerapi.api.model.dto.TaskListResponseDto;
+import dev.ropimasi.taskmanagerapi.api.model.repository.TaskRepository;
+import dev.ropimasi.taskmanagerapi.api.service.TaskService;
 import jakarta.validation.Valid;
 
 

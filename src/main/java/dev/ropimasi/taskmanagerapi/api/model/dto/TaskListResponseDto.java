@@ -1,4 +1,4 @@
-package dev.ropimasi.taskmanager.api.model.dto;
+package dev.ropimasi.taskmanagerapi.api.model.dto;
 
 import java.time.LocalDateTime;
 

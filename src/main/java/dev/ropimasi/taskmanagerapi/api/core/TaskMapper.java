@@ -1,10 +1,10 @@
-package dev.ropimasi.taskmanager.api.core;
+package dev.ropimasi.taskmanagerapi.api.core;
 
 import org.springframework.stereotype.Component;
-import dev.ropimasi.taskmanager.api.model.dto.TaskCreateRequestDto;
-import dev.ropimasi.taskmanager.api.model.dto.TaskCreateResponseDto;
-import dev.ropimasi.taskmanager.api.model.dto.TaskListResponseDto;
-import dev.ropimasi.taskmanager.api.model.entity.Task;
+import dev.ropimasi.taskmanagerapi.api.model.dto.TaskCreateRequestDto;
+import dev.ropimasi.taskmanagerapi.api.model.dto.TaskCreateResponseDto;
+import dev.ropimasi.taskmanagerapi.api.model.dto.TaskListResponseDto;
+import dev.ropimasi.taskmanagerapi.api.model.entity.Task;
 
 
 
