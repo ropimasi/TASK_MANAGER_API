@@ -35,9 +35,8 @@ _(dev.ropimasi.taskmanagerapi)_
 ## DESCRIPTION
 * SUBJECT: Java and Spring application for an API CRUD;
 * PROJECT NAME: **TASK MANAGER API**;
-* LIBRARY NAME: **---**;
 * WHAT IS: **TASK MANAGER API** is a small software aims to provide an API _CRUD_ to tasks registry. More information about versions and compatibility can be found below;
-* TO WIT: The **TASK MANAGER API** and its resources are a project sample, which I have developing to demonstrate some of my abilities. The **GRW** project belongs to my personal portfolio. Its detailed project can be followed just here on GitHub: [github.com/users/ROPIMASI/projects/](https://github.com/users/ROPIMASI/projects/). It is also found on my web-portfolio: [ropimasi.github.io](https://ropimasi.github.io/).  
+* TO WIT: The **TASK MANAGER API** and its resources are a project sample, which I have developing to demonstrate some of my abilities. The **TASK MANAGER API** project belongs to my personal portfolio. Its detailed project can be followed just here on GitHub: [github.com/ropimasi/TASK_MANAGER_API/projects](https://github.com/ropimasi/TASK_MANAGER_API/projects). It is also found on my web-portfolio: [ropimasi.github.io](https://ropimasi.github.io/).  
 
 &nbsp;  
 &nbsp;  
@@ -45,7 +44,7 @@ _(dev.ropimasi.taskmanagerapi)_
 
 <a name="description-screenshots"></a>
 ### DESCRIPTION - SCREENSHOTS
-##### CLI- Code & Build:  
+##### Code & Build:  
 ![...](resource/img/TMAPI-Screenshot-1.png)
 
 &nbsp;  
@@ -53,6 +52,7 @@ _(dev.ropimasi.taskmanagerapi)_
 ##### Request & Response:  
 ![...](resource/img/TMAPI-Screenshot-2.png)
 ![...](resource/img/TMAPI-Screenshot-3.png)
+![...](resource/img/TMAPI-Screenshot-4.png)
 
 &nbsp;  
 &nbsp;  
@@ -60,7 +60,13 @@ _(dev.ropimasi.taskmanagerapi)_
 
 <a name="techniques"></a>
 ## TECHNIQUES USED
-// TO DO...  
+  + Layered Architecture: Clear separation between Controller, Service, Repository, and DTOs;
+  + Data Mapping: Use of a dedicated Mappers layer to isolate JPA Entities from API Contracts (DTOs);
+  + Immutability with Java Records: Use of Records for data representation, ensuring concise and immutable DTOs;
+  + Global Error Handling: Centralization of exceptions with @ControllerAdvice, returning standardized errors and semantic HTTP codes;
+  + Automatic Auditing: Automated registering of creation date (createdAt) and update date (updatedAt) managed by Hibernate;
+  + Data Validation: Use of Bean Validation to ensure the integrity of received information (e.g., @NotBlank, @Size);
+  + Robust Persistence: Integration with Spring Data JPA for efficient operations on relational databases.  
 
 &nbsp;  
 &nbsp;  
@@ -101,15 +107,22 @@ Thus, this project uses **_SemVer_** for its versioning. **_SemVer_** is a speci
 
 <a name="features"></a>
 ## FEATURES
-### Features in current version (0.0.3)
-  + A... //TODO:
-  + B... //TODO:
+### Features in current version (0.1.0)
+  + Task creation: Endpoint to registry new tasks with required fields validation;
+  + General listing: Recovering all tasks registered and converted to listing _DTO_s;
+  + Search by `Id`: Detailed seeking a specific task with non-existent resources error handling;
+  + Fully update (_PUT_): Edit an existent task replacing all fields;
+  + Hard delete: Exclusion of records on databse by `Id`.
 
 &nbsp;  
 
 ### Features in target release version (1.0.0)
-  + A... //TODO:
-  + B... //TODO:
+  + All features above, and plus...
+  + Search by `complete` field: Detailed seeking of a list of tasks with `complete` field marked as complete;
+  + Search by `complete` field: Detailed seeking of a list of tasks with `complete` field marked as not complete;
+  + Search by `title` field: Detailed seeking of a list of tasks with `title` field containing a string sent by API's client;
+  + Partial update (_PATCH_): Edit an existent task replacing only some fields sent in the request's body;
+  + Bounding by `user` field: Make restricted to only allow access to the user's own tasks;
 
 &nbsp;  
 &nbsp;  
