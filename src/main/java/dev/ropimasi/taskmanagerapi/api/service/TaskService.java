@@ -7,6 +7,8 @@ import dev.ropimasi.taskmanagerapi.api.core.TaskMapper;
 import dev.ropimasi.taskmanagerapi.api.model.dto.TaskCreatingRequestDto;
 import dev.ropimasi.taskmanagerapi.api.model.dto.TaskCreatingResponseDto;
 import dev.ropimasi.taskmanagerapi.api.model.dto.TaskRecoveringResponseDto;
+import dev.ropimasi.taskmanagerapi.api.model.dto.TaskUpdatingRequestDto;
+import dev.ropimasi.taskmanagerapi.api.model.dto.TaskUpdatingResponseDto;
 import dev.ropimasi.taskmanagerapi.api.model.entity.Task;
 import dev.ropimasi.taskmanagerapi.api.model.repository.TaskRepository;
 import dev.ropimasi.taskmanagerapi.api.service.exception.ResourceNotFoundException;
@@ -49,4 +51,27 @@ public class TaskService {
 		return taskMapper.toRecoveringResponseDto(task);
 	}
 
+
+	@Transactional
+	public TaskUpdatingResponseDto updateTask(Long id, TaskUpdatingRequestDto taskDto) {
+		Task existingTask = taskRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Task not found with id: " + id));
+
+		taskMapper.updateEntityFromDto(existingTask, taskDto);
+
+		/* Since we are in a @Transactional method, the changes to existingTask will be automatically
+		 * detected (by Hibernate) and persisted when the transaction commits. So I let the line below
+		 * commented out, but it is not strictly necessary to call save() here. Performance optimization.
+		 * */
+		// taskRepository.save(existingTask);
+		return taskMapper.toUpdatingResponseDto(existingTask);
+	}
+
 }
+
+//
+//
+//
+//
+//
+//
