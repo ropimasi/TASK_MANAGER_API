@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,7 +38,7 @@ public class TaskController {
 
 
 	@GetMapping
-	public ResponseEntity<List<TaskRecoveringResponseDto>> listAll() {
+	public ResponseEntity<List<TaskRecoveringResponseDto>> getAll() {
 		List<TaskRecoveringResponseDto> taskDtos = taskService.findAllTasks();
 		return ResponseEntity.ok(taskDtos);
 	}
@@ -56,5 +57,12 @@ public class TaskController {
 
 		TaskUpdatingResponseDto updatedTaskDto = taskService.updateTask(id, taskDto);
 		return ResponseEntity.ok(updatedTaskDto);
+	}
+
+
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Void> deleteTask(@PathVariable Long id) {
+		taskService.deleteTask(id);
+		return ResponseEntity.noContent().build();
 	}
 }

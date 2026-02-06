@@ -67,6 +67,16 @@ public class TaskService {
 		return taskMapper.toUpdatingResponseDto(existingTask);
 	}
 
+
+	@Transactional
+	public void deleteTask(Long id) {
+		if (!taskRepository.existsById(id)) {
+			throw new ResourceNotFoundException("Cannot delete. Task not found with id: " + id);
+		}
+
+		taskRepository.deleteById(id);
+	}
+
 }
 
 //
