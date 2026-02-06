@@ -36,7 +36,13 @@ _(dev.ropimasi.taskmanagerapi)_
 * SUBJECT: Java and Spring application for an API CRUD;
 * PROJECT NAME: **TASK MANAGER API**;
 * WHAT IS: **TASK MANAGER API** is a small software aims to provide an API _CRUD_ to tasks registry. More information about versions and compatibility can be found below;
-* TO WIT: The **TASK MANAGER API** and its resources are a project sample, which I have developing to demonstrate some of my abilities. The **TASK MANAGER API** project belongs to my personal portfolio. Its detailed project can be followed just here on GitHub: [github.com/ropimasi/TASK_MANAGER_API/projects](https://github.com/ropimasi/TASK_MANAGER_API/projects). It is also found on my web-portfolio: [ropimasi.github.io](https://ropimasi.github.io/).  
+* TECH-STACK:
+  + Java 17
+  + Spring Boot 3
+  + Spring Data JPA
+  + Lombok
+  + Hibernate Validator
+  + PostgreSQL v16
 
 &nbsp;  
 &nbsp;  
