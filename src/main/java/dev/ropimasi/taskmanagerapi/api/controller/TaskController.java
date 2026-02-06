@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import dev.ropimasi.taskmanagerapi.api.model.dto.TaskCreatingRequestDto;
 import dev.ropimasi.taskmanagerapi.api.model.dto.TaskCreatingResponseDto;
@@ -48,6 +49,28 @@ public class TaskController {
 	public ResponseEntity<TaskRecoveringResponseDto> getById(@PathVariable Long id) {
 		TaskRecoveringResponseDto taskDto = taskService.findTaskById(id);
 		return ResponseEntity.ok(taskDto);
+	}
+
+
+	@GetMapping("/completed")
+	public ResponseEntity<List<TaskRecoveringResponseDto>> getCompleted() {
+		List<TaskRecoveringResponseDto> taskDtos = taskService.findCompletedTasks();
+		return ResponseEntity.ok(taskDtos);
+	}
+
+
+	@GetMapping("/not-completed")
+	public ResponseEntity<List<TaskRecoveringResponseDto>> getNotCompleted() {
+		List<TaskRecoveringResponseDto> taskDtos = taskService.findNotCompletedTasks();
+		return ResponseEntity.ok(taskDtos);
+	}
+
+
+	@GetMapping("/search")
+	public ResponseEntity<List<TaskRecoveringResponseDto>> searchByTitle(@RequestParam String title) {
+		List<TaskRecoveringResponseDto> taskDtos = taskService.findTasksByTitleContainingIgnoreCase(title);
+		return ResponseEntity.ok(taskDtos);
+
 	}
 
 

@@ -113,22 +113,22 @@ Thus, this project uses **_SemVer_** for its versioning. **_SemVer_** is a speci
 
 <a name="features"></a>
 ## FEATURES
-### Features in current version (0.1.0)
+### Features in current version (0.3.0)
   + Task creation: Endpoint to registry new tasks with required fields validation;
   + General listing: Recovering all tasks registered and converted to listing _DTO_s;
   + Search by `Id`: Detailed seeking a specific task with non-existent resources error handling;
   + Fully update (_PUT_): Edit an existent task replacing all fields;
   + Hard delete: Exclusion of records on databse by `Id`.
+  + Search by `complete` field: Detailed seeking of a list of tasks with `complete` field marked as complete;
+  + Search by `complete` field: Detailed seeking of a list of tasks with `complete` field marked as not complete;
+  + Search by `title` field: Detailed seeking of a list of tasks with `title` field containing a string sent by API's client;
 
 &nbsp;  
 
 ### Features in target release version (1.0.0)
   + All features above, and plus...
-  + Search by `complete` field: Detailed seeking of a list of tasks with `complete` field marked as complete;
-  + Search by `complete` field: Detailed seeking of a list of tasks with `complete` field marked as not complete;
-  + Search by `title` field: Detailed seeking of a list of tasks with `title` field containing a string sent by API's client;
   + Partial update (_PATCH_): Edit an existent task replacing only some fields sent in the request's body;
-  + Bounding by `user` field: Make restricted to only allow access to the user's own tasks;
+  + Bounding by the `user` field: Restrict access only to the user's own tasks;
 
 &nbsp;  
 &nbsp;  

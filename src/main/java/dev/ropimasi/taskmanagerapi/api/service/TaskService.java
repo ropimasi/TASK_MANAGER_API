@@ -45,10 +45,30 @@ public class TaskService {
 
 
 	@Transactional(readOnly = true)
+	public List<TaskRecoveringResponseDto> findCompletedTasks() {
+		return taskRepository.findByCompletedTrue().stream().map(taskMapper::toRecoveringResponseDto).toList();
+	}
+
+
+	@Transactional(readOnly = true)
+	public List<TaskRecoveringResponseDto> findNotCompletedTasks() {
+		return taskRepository.findByCompletedFalse().stream().map(taskMapper::toRecoveringResponseDto).toList();
+	}
+
+
+	@Transactional(readOnly = true)
 	public TaskRecoveringResponseDto findTaskById(Long id) {
 		Task task = taskRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Task not found with id: " + id));
 		return taskMapper.toRecoveringResponseDto(task);
+	}
+
+
+	// Método que busca TASK por TITLE, conforme repository = List<Task> findByTitleContainingIgnoreCase(String title);
+	@Transactional(readOnly = true)
+	public List<TaskRecoveringResponseDto> findTasksByTitleContainingIgnoreCase(String title) {
+		return taskRepository.findByTitleContainingIgnoreCase(title).stream().map(taskMapper::toRecoveringResponseDto)
+				.toList();
 	}
 
 
