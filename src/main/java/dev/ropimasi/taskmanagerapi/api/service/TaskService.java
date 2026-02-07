@@ -46,14 +46,14 @@ public class TaskService {
 
 
 	@Transactional(readOnly = true)
-	public List<TaskRecoveringResponseDto> findCompletedTasks() {
-		return taskRepository.findByCompletedTrue().stream().map(taskMapper::toRecoveringResponseDto).toList();
+	public List<TaskRecoveringResponseDto> findCompletedTasks(Sort sort) {
+		return taskRepository.findByCompletedTrue(sort).stream().map(taskMapper::toRecoveringResponseDto).toList();
 	}
 
 
 	@Transactional(readOnly = true)
-	public List<TaskRecoveringResponseDto> findNotCompletedTasks() {
-		return taskRepository.findByCompletedFalse().stream().map(taskMapper::toRecoveringResponseDto).toList();
+	public List<TaskRecoveringResponseDto> findNotCompletedTasks(Sort sort) {
+		return taskRepository.findByCompletedFalse(sort).stream().map(taskMapper::toRecoveringResponseDto).toList();
 	}
 
 
@@ -67,10 +67,8 @@ public class TaskService {
 
 	@Transactional(readOnly = true)
 	public List<TaskRecoveringResponseDto> findTasksByTitleContainingIgnoreCase(String title, Sort sort) {
-		return taskRepository.findByTitleContainingIgnoreCase(title, sort)
-				.stream()
-				.map(taskMapper::toRecoveringResponseDto)
-				.toList();
+		return taskRepository.findByTitleContainingIgnoreCase(title, sort).stream()
+				.map(taskMapper::toRecoveringResponseDto).toList();
 	}
 
 

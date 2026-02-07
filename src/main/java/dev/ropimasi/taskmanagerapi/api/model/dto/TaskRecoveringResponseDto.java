@@ -4,6 +4,10 @@ import java.time.LocalDateTime;
 
 
 
-public record TaskRecoveringResponseDto(Long id, String title, String description, Boolean completed,
+public record TaskRecoveringResponseDto(
+		Long id,
+		String title,
+		String description,
+		Boolean completed,
 		LocalDateTime createdAt) {
 }

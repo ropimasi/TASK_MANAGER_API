@@ -1,7 +1,6 @@
 package dev.ropimasi.taskmanagerapi.api.controller;
 
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.SortDefault;
 import org.springframework.http.HttpStatus;
@@ -29,8 +28,13 @@ import jakarta.validation.Valid;
 @RequestMapping("/api/v1/tasks")
 public class TaskController {
 
-	@Autowired
 	private TaskService taskService;
+
+
+	// Single constructor: Spring will automatically inject the dependencies.
+	public TaskController(TaskService taskService) {
+		this.taskService = taskService;
+	}
 
 
 	@PostMapping
@@ -56,22 +60,23 @@ public class TaskController {
 
 
 	@GetMapping("/completed")
-	public ResponseEntity<List<TaskRecoveringResponseDto>> getCompleted() {
-		List<TaskRecoveringResponseDto> taskDtos = taskService.findCompletedTasks();
+	public ResponseEntity<List<TaskRecoveringResponseDto>> getCompleted(
+			@SortDefault(sort = "createdAt", direction = Sort.Direction.ASC) Sort sort) {
+		List<TaskRecoveringResponseDto> taskDtos = taskService.findCompletedTasks(sort);
 		return ResponseEntity.ok(taskDtos);
 	}
 
 
 	@GetMapping("/not-completed")
-	public ResponseEntity<List<TaskRecoveringResponseDto>> getNotCompleted() {
-		List<TaskRecoveringResponseDto> taskDtos = taskService.findNotCompletedTasks();
+	public ResponseEntity<List<TaskRecoveringResponseDto>> getNotCompleted(
+			@SortDefault(sort = "createdAt", direction = Sort.Direction.ASC) Sort sort) {
+		List<TaskRecoveringResponseDto> taskDtos = taskService.findNotCompletedTasks(sort);
 		return ResponseEntity.ok(taskDtos);
 	}
 
 
 	@GetMapping("/search")
-	public ResponseEntity<List<TaskRecoveringResponseDto>> searchByTitle(
-			@RequestParam String title,
+	public ResponseEntity<List<TaskRecoveringResponseDto>> searchByTitle(@RequestParam String title,
 			@SortDefault(sort = "createdAt", direction = Sort.Direction.ASC) Sort sort) {
 		List<TaskRecoveringResponseDto> taskDtos = taskService.findTasksByTitleContainingIgnoreCase(title, sort);
 		return ResponseEntity.ok(taskDtos);

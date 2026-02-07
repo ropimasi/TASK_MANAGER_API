@@ -4,6 +4,10 @@ import java.time.LocalDateTime;
 
 
 
-public record TaskUpdatingResponseDto(Long id, String title, String description, Boolean completed,
+public record TaskUpdatingResponseDto(
+		Long id,
+		String title,
+		String description,
+		Boolean completed,
 		LocalDateTime updatedAt) {
 }

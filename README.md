@@ -113,7 +113,7 @@ Thus, this project uses **_SemVer_** for its versioning. **_SemVer_** is a speci
 
 <a name="features"></a>
 ## FEATURES
-### Features in current version (0.3.1)
+### Features in current version (0.3.2)
   + Task creation: Endpoint to registry new tasks with required fields validation;
   + General listing: Recovering all tasks registered and converted to listing _DTO_s;
   + Search by `Id`: Detailed seeking a specific task with non-existent resources error handling;

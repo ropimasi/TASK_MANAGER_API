@@ -12,7 +12,7 @@ import dev.ropimasi.taskmanagerapi.api.model.entity.Task;
 public interface TaskRepository extends JpaRepository<Task, Long> {
 	
 	// I do usage of JpaRepository query-methods.
-	List<Task> findByCompletedTrue();
-	List<Task> findByCompletedFalse();
+	List<Task> findByCompletedTrue(Sort sort);
+	List<Task> findByCompletedFalse(Sort sort);
 	List<Task> findByTitleContainingIgnoreCase(String title, Sort sort);
 }
