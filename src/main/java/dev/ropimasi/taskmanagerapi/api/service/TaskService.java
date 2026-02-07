@@ -1,6 +1,7 @@
 package dev.ropimasi.taskmanagerapi.api.service;
 
 import java.util.List;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import dev.ropimasi.taskmanagerapi.api.core.TaskMapper;
@@ -39,8 +40,8 @@ public class TaskService {
 
 
 	@Transactional(readOnly = true)
-	public List<TaskRecoveringResponseDto> findAllTasks() {
-		return taskRepository.findAll().stream().map(taskMapper::toRecoveringResponseDto).toList();
+	public List<TaskRecoveringResponseDto> findAllTasks(Sort sort) {
+		return taskRepository.findAll(sort).stream().map(taskMapper::toRecoveringResponseDto).toList();
 	}
 
 
@@ -64,10 +65,11 @@ public class TaskService {
 	}
 
 
-	// Método que busca TASK por TITLE, conforme repository = List<Task> findByTitleContainingIgnoreCase(String title);
 	@Transactional(readOnly = true)
-	public List<TaskRecoveringResponseDto> findTasksByTitleContainingIgnoreCase(String title) {
-		return taskRepository.findByTitleContainingIgnoreCase(title).stream().map(taskMapper::toRecoveringResponseDto)
+	public List<TaskRecoveringResponseDto> findTasksByTitleContainingIgnoreCase(String title, Sort sort) {
+		return taskRepository.findByTitleContainingIgnoreCase(title, sort)
+				.stream()
+				.map(taskMapper::toRecoveringResponseDto)
 				.toList();
 	}
 

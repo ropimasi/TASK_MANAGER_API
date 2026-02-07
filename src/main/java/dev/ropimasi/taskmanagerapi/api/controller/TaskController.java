@@ -2,6 +2,8 @@ package dev.ropimasi.taskmanagerapi.api.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.SortDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -39,8 +41,9 @@ public class TaskController {
 
 
 	@GetMapping
-	public ResponseEntity<List<TaskRecoveringResponseDto>> getAll() {
-		List<TaskRecoveringResponseDto> taskDtos = taskService.findAllTasks();
+	public ResponseEntity<List<TaskRecoveringResponseDto>> getAll(
+			@SortDefault(sort = "createdAt", direction = Sort.Direction.ASC) Sort sort) {
+		List<TaskRecoveringResponseDto> taskDtos = taskService.findAllTasks(sort);
 		return ResponseEntity.ok(taskDtos);
 	}
 
@@ -67,8 +70,10 @@ public class TaskController {
 
 
 	@GetMapping("/search")
-	public ResponseEntity<List<TaskRecoveringResponseDto>> searchByTitle(@RequestParam String title) {
-		List<TaskRecoveringResponseDto> taskDtos = taskService.findTasksByTitleContainingIgnoreCase(title);
+	public ResponseEntity<List<TaskRecoveringResponseDto>> searchByTitle(
+			@RequestParam String title,
+			@SortDefault(sort = "createdAt", direction = Sort.Direction.ASC) Sort sort) {
+		List<TaskRecoveringResponseDto> taskDtos = taskService.findTasksByTitleContainingIgnoreCase(title, sort);
 		return ResponseEntity.ok(taskDtos);
 
 	}
