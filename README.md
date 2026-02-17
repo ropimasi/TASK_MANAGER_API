@@ -113,7 +113,7 @@ Thus, this project uses **_SemVer_** for its versioning. **_SemVer_** is a speci
 
 <a name="features"></a>
 ## FEATURES
-### Features in current version (0.3.2)
+### Features in current version (0.4.0)
   + Task creation: Endpoint to registry new tasks with required fields validation;
   + General listing: Recovering all tasks registered and converted to listing _DTO_s;
   + Search by `Id`: Detailed seeking a specific task with non-existent resources error handling;
@@ -122,6 +122,7 @@ Thus, this project uses **_SemVer_** for its versioning. **_SemVer_** is a speci
   + Search by `complete` field: Detailed seeking of a list of tasks with `complete` field marked as complete;
   + Search by `complete` field: Detailed seeking of a list of tasks with `complete` field marked as not complete;
   + Search by `title` field: Detailed seeking of a list of tasks with `title` field containing a string sent by API's client;
+  + Centralized exception handling;
 
 &nbsp;  
 
