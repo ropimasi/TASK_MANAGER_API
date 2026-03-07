@@ -93,8 +93,8 @@ See more details about the versioning for this project in [readme-pages/versioni
 ## FEATURES
 ### Features in current version (0.4.0)
   + Task creation: Endpoint to registry new tasks with required fields validation;
-  + General listing: Recovering all tasks registered and converted to listing _DTO_s;
-  + Search by `Id`: Detailed seeking a specific task with non-existent resources error handling;
+  + General listing: Recovering all tasks registered and converted to a _DTO_ list;
+  + Search by `Id`: Detailed seeking a specific task id;
   + Fully update (_PUT_): Edit an existent task replacing all fields;
   + Hard delete: Exclusion of records on databse by `Id`.
   + Search by `complete` field: Detailed seeking of a list of tasks with `complete` field marked as complete;
