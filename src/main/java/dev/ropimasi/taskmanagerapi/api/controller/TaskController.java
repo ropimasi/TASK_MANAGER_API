@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import dev.ropimasi.taskmanagerapi.api.model.dto.TaskCreatingRequestDto;
 import dev.ropimasi.taskmanagerapi.api.model.dto.TaskCreatingResponseDto;
+import dev.ropimasi.taskmanagerapi.api.model.dto.TaskPatchingRequestDto;
+import dev.ropimasi.taskmanagerapi.api.model.dto.TaskPatchingResponseDto;
 import dev.ropimasi.taskmanagerapi.api.model.dto.TaskRecoveringResponseDto;
 import dev.ropimasi.taskmanagerapi.api.model.dto.TaskUpdatingRequestDto;
 import dev.ropimasi.taskmanagerapi.api.model.dto.TaskUpdatingResponseDto;
@@ -92,6 +95,16 @@ public class TaskController {
 		return ResponseEntity.ok(updatedTaskDto);
 	}
 
+	
+	@PatchMapping("/{id}")
+	public ResponseEntity<TaskPatchingResponseDto> patchTask(
+	        @PathVariable Long id, 
+	        @Valid @RequestBody TaskPatchingRequestDto patchDto) {
+	    
+	    TaskPatchingResponseDto responseDto = taskService.patchTask(id, patchDto);
+	    return ResponseEntity.ok(responseDto);
+	}
+	
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> deleteTask(@PathVariable Long id) {

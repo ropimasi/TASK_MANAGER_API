@@ -91,7 +91,7 @@ See more details about the versioning for this project in [readme-pages/versioni
 
 <a name="features"></a>
 ## FEATURES
-### Features in current version (0.4.0)
+### Features in current version (0.5.0)
   + Task creation: Endpoint to registry new tasks with required fields validation;
   + General listing: Recovering all tasks registered and converted to a _DTO_ list;
   + Search by `Id`: Detailed seeking a specific task id;
@@ -101,12 +101,14 @@ See more details about the versioning for this project in [readme-pages/versioni
   + Search by `complete` field: Detailed seeking of a list of tasks with `complete` field marked as not complete;
   + Search by `title` field: Detailed seeking of a list of tasks with `title` field containing a string sent by API's client;
   + Centralized exception handling;
+  + Partial update (_PATCH_): Edit an existent task replacing only some fields sent in the request's body;
 
 &nbsp;  
 
 ### Features in target release version (1.0.0)
   + All features above, and plus...
-  + Partial update (_PATCH_): Edit an existent task replacing only some fields sent in the request's body;
+  + Non-functional requirement: implement unit tests using the JUnit library;
+  + Non-functional requirement: implement Open-API documentation using Swagger;
   + Bounding by the `user` field: Restrict access only to the user's own tasks;
 
 &nbsp;  

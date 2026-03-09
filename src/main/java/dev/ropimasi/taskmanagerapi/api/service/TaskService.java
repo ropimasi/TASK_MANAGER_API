@@ -7,6 +7,8 @@ import org.springframework.transaction.annotation.Transactional;
 import dev.ropimasi.taskmanagerapi.api.core.TaskMapper;
 import dev.ropimasi.taskmanagerapi.api.model.dto.TaskCreatingRequestDto;
 import dev.ropimasi.taskmanagerapi.api.model.dto.TaskCreatingResponseDto;
+import dev.ropimasi.taskmanagerapi.api.model.dto.TaskPatchingRequestDto;
+import dev.ropimasi.taskmanagerapi.api.model.dto.TaskPatchingResponseDto;
 import dev.ropimasi.taskmanagerapi.api.model.dto.TaskRecoveringResponseDto;
 import dev.ropimasi.taskmanagerapi.api.model.dto.TaskUpdatingRequestDto;
 import dev.ropimasi.taskmanagerapi.api.model.dto.TaskUpdatingResponseDto;
@@ -79,15 +81,23 @@ public class TaskService {
 
 		taskMapper.updateEntityFromDto(existingTask, taskDto);
 
-		/* Since we are in a @Transactional method, the changes to existingTask will be automatically
-		 * detected (by Hibernate) and persisted when the transaction commits. So I let the line below
-		 * commented out, but it is not strictly necessary to call save() here. Performance optimization.
-		 * */
-		// taskRepository.save(existingTask);
+		existingTask = taskRepository.save(existingTask);
 		return taskMapper.toUpdatingResponseDto(existingTask);
 	}
 
+	
+	@Transactional
+	public TaskPatchingResponseDto patchTask(Long id, TaskPatchingRequestDto patchDto) {
+		Task existingTask = taskRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Cannot patch. Task not found with id: " + id));
+		
+		taskMapper.updateEntityFromPatchDto(existingTask, patchDto);
+		
+		existingTask = taskRepository.save(existingTask);
+		return taskMapper.toPatchingResponseDto(existingTask);
+	}
 
+	
 	@Transactional
 	public void deleteTask(Long id) {
 		if (!taskRepository.existsById(id)) {
@@ -96,6 +106,7 @@ public class TaskService {
 
 		taskRepository.deleteById(id);
 	}
+	
 
 }
 

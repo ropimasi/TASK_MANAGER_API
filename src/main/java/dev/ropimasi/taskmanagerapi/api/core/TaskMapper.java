@@ -3,6 +3,8 @@ package dev.ropimasi.taskmanagerapi.api.core;
 import org.springframework.stereotype.Component;
 import dev.ropimasi.taskmanagerapi.api.model.dto.TaskCreatingRequestDto;
 import dev.ropimasi.taskmanagerapi.api.model.dto.TaskCreatingResponseDto;
+import dev.ropimasi.taskmanagerapi.api.model.dto.TaskPatchingRequestDto;
+import dev.ropimasi.taskmanagerapi.api.model.dto.TaskPatchingResponseDto;
 import dev.ropimasi.taskmanagerapi.api.model.dto.TaskRecoveringResponseDto;
 import dev.ropimasi.taskmanagerapi.api.model.dto.TaskUpdatingRequestDto;
 import dev.ropimasi.taskmanagerapi.api.model.dto.TaskUpdatingResponseDto;
@@ -27,21 +29,43 @@ public class TaskMapper {
 
 
 	public TaskCreatingResponseDto toCreatingResponseDto(Task task) {
-		return new TaskCreatingResponseDto(task.getId(), task.getTitle(), task.getDescription(), task.getCompleted());
+		return new TaskCreatingResponseDto(
+				task.getId(),
+				task.getTitle(),
+				task.getDescription(),
+				task.getCompleted());
 	}
 
 
 	public TaskRecoveringResponseDto toRecoveringResponseDto(Task task) {
-		return new TaskRecoveringResponseDto(task.getId(), task.getTitle(), task.getDescription(), task.getCompleted(),
+		return new TaskRecoveringResponseDto(
+				task.getId(),
+				task.getTitle(),
+				task.getDescription(),
+				task.getCompleted(),
 				task.getCreatedAt());
 	}
 
 
 	public TaskUpdatingResponseDto toUpdatingResponseDto(Task task) {
-		return new TaskUpdatingResponseDto(task.getId(), task.getTitle(), task.getDescription(), task.getCompleted(),
+		return new TaskUpdatingResponseDto(
+				task.getId(),
+				task.getTitle(),
+				task.getDescription(),
+				task.getCompleted(),
 				task.getUpdatedAt());
 	}
 
+	
+	public TaskPatchingResponseDto toPatchingResponseDto(Task task) {
+	    return new TaskPatchingResponseDto(
+	            task.getId(),
+	            task.getTitle(),
+	            task.getDescription(),
+	            task.getCompleted(),
+	            task.getUpdatedAt()
+	    );
+	}
 
 	public void updateEntityFromDto(Task task, TaskUpdatingRequestDto taskDto) {
 		/* We have reflexion here: There is a approach would do verification weather the fields are null or not.
@@ -51,6 +75,21 @@ public class TaskMapper {
 		task.setTitle(taskDto.title());
 		task.setDescription(taskDto.description());
 		task.setCompleted(taskDto.completed());
+	}
+
+
+	public void updateEntityFromPatchDto(Task task, TaskPatchingRequestDto patchDto) {
+		if (patchDto.title() != null) {
+			task.setTitle(patchDto.title());
+		}
+
+		if (patchDto.description() != null) {
+			task.setDescription(patchDto.description());
+		}
+
+		if (patchDto.completed() != null) {
+			task.setCompleted(patchDto.completed());
+		}
 	}
 
 }
