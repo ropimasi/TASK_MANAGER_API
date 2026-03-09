@@ -96,21 +96,22 @@ See more details about the versioning for this project in [readme-pages/versioni
   + General listing: Recovering all tasks registered and converted to a _DTO_ list;
   + Search by `Id`: Detailed seeking a specific task id;
   + Fully update (_PUT_): Edit an existent task replacing all fields;
+  + Partial update (_PATCH_): Edit an existent task replacing only some fields sent in the request's body;
   + Hard delete: Exclusion of records on databse by `Id`.
   + Search by `complete` field: Detailed seeking of a list of tasks with `complete` field marked as complete;
   + Search by `complete` field: Detailed seeking of a list of tasks with `complete` field marked as not complete;
   + Search by `title` field: Detailed seeking of a list of tasks with `title` field containing a string sent by API's client;
-  + Centralized exception handling;
-  + Partial update (_PATCH_): Edit an existent task replacing only some fields sent in the request's body;
+  + Centralized exception handling: Standardized API error responses for better client-side integration;
 
 &nbsp;  
 
 ### Features in target release version (1.0.0)
   + All features above, and plus...
-  + Non-functional requirement: implement unit tests using the JUnit library;
-  + Non-functional requirement: implement Open-API documentation using Swagger;
-  + Bounding by the `user` field: Restrict access only to the user's own tasks;
-
+  + Unit Testing: Implementation of comprehensive unit tests using JUnit and Mockito;
+  + API Documentation: Integration with OpenAPI/Swagger for interactive documentation;
+  + Multi-user Support: Introduction of the `User` entity and task-to-user bounding;
+  + Security: Implementation of Authentication and Authorization to restrict task access to owners only.  
+  
 &nbsp;  
 &nbsp;  
 &nbsp;  
