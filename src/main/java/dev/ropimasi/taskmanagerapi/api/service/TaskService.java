@@ -77,7 +77,7 @@ public class TaskService {
 	@Transactional
 	public TaskUpdatingResponseDto updateTask(Long id, TaskUpdatingRequestDto taskDto) {
 		Task existingTask = taskRepository.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("Task not found with id: " + id));
+				.orElseThrow(() -> new ResourceNotFoundException("Cannot update. Task not found with id: " + id));
 
 		taskMapper.updateEntityFromDto(existingTask, taskDto);
 
@@ -107,7 +107,6 @@ public class TaskService {
 		taskRepository.deleteById(id);
 	}
 	
-
 }
 
 //

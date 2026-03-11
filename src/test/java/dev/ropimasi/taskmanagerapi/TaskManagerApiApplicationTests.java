@@ -1,4 +1,4 @@
-package dev.ropimasi.taskmanager;
+package dev.ropimasi.taskmanagerapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
