@@ -83,7 +83,6 @@ public class TaskController {
 			@SortDefault(sort = "createdAt", direction = Sort.Direction.ASC) Sort sort) {
 		List<TaskRecoveringResponseDto> taskDtos = taskService.findTasksByTitleContainingIgnoreCase(title, sort);
 		return ResponseEntity.ok(taskDtos);
-
 	}
 
 
